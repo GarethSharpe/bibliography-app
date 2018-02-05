@@ -2,12 +2,12 @@
 
 Request for Comment
 
-Date:         01/20/2018
-Author:       Gareth Sharpe
-ID:				    090361370
-Contact: 		  garethjsharpe at gmail dot com
-Last Edited: 	01/20/2018
-Status: 		  Proposed
+Date:		01/20/2018				<br />
+Author:		Gareth Sharpe				<br />
+ID:		090361370				<br />
+Contact:	garethjsharpe at gmail dot com		<br />
+Last Edited: 	01/20/2018				<br />
+Status: 	Proposed				<br />
 
 ## 1. Overview
 
