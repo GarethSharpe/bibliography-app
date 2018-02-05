@@ -56,20 +56,20 @@ The objects to be used inside the ConcurrentHashMap will be Book objects. A Book
 
 	public class Book {
 
-		private int isbn;				// primary key
-		    private String title;
-		    private String author;
-		    private String publisher;
+		private int isbn;			// primary key
+		private String title;
+		private String author;
+		private String publisher;
 
-		    public Book(int isbn, String title, String author, String publisher) {
+		public Book(int isbn, String title, String author, String publisher) {
 			this.isbn = isbn;   
 			this.title = title;
 			this.author = author;
 			this.publisher=publisher;
-			}
-
-			...
 		}
+
+		...
+	}
 
 ### 3.2 Structure of Client(s)
 
