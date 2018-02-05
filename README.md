@@ -134,17 +134,17 @@ In more detail, the server implementation will look similar to the following:
 		...
 
 		int portNumber = Integer.parseInt(args[0]);
-	boolean listening = true;
+		boolean listening = true;
 
-	try (ServerSocket serverSocket = new ServerSocket(portNumber)) { 
-	    while (listening) {
-		Thread serverThread = new ServerThread(serverSocket.accept());
-		serverThread.start();
-	    }
-	} catch (IOException e) {
-	    // handle error
-	}
-    }
+		try (ServerSocket serverSocket = new ServerSocket(portNumber)) { 
+		    while (listening) {
+			Thread serverThread = new ServerThread(serverSocket.accept());
+			serverThread.start();
+		    }
+		} catch (IOException e) {
+		    // handle error
+		}
+    	}
 
 The thread reads from and writes to the client connection as necessary.
 
