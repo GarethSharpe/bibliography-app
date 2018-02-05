@@ -33,39 +33,39 @@ Status: 		  Proposed
 
 	3.1 Structure of Data
 
-		The overall data structure to be used for this application will be a ConcurrentHashMap. 
+	The overall data structure to be used for this application will be a ConcurrentHashMap. 
 
-			java.util.concurrent
-			Class ConcurrentHashMap<K,V>
+		java.util.concurrent
+		Class ConcurrentHashMap<K,V>
 
-		    java.lang.Object
-		        java.util.AbstractMap<K,V>
-		            java.util.concurrent.ConcurrentHashMap<K,V> 
+		java.lang.Object
+		    java.util.AbstractMap<K,V>
+			java.util.concurrent.ConcurrentHashMap<K,V> 
 
-		    Type Parameters:
-		        K - the type of keys maintained by this map
-		        V - the type of mapped values
+		Type Parameters:
+		    K - the type of keys maintained by this map
+		    V - the type of mapped values
 
-		    public class ConcurrentHashMap<K,V>
-		    extends AbstractMap<K,V>
-		    implements ConcurrentMap<K,V>, Serializable
+		public class ConcurrentHashMap<K,V>
+		extends AbstractMap<K,V>
+		implements ConcurrentMap<K,V>, Serializable
 
-	    This class is a hash table supporting full concurrency of retrievals and high expected concurrency for updates. This class obeys the same functional specification as Hashtable, and includes versions of methods corresponding to each method of Hashtable. Retrievals reflect the results of the most recently completed update operations holding upon their onset. The table is dynamically expanded when there are too many collisions. This class does not allow null to be used as a key or value. 
+	  This class is a hash table supporting full concurrency of retrievals and high expected concurrency for updates. This 	class obeys the same functional specification as Hashtable, and includes versions of methods corresponding to each method of Hashtable. Retrievals reflect the results of the most recently completed update operations holding upon their onset. The table is dynamically expanded when there are too many collisions. This class does not allow null to be used as a key or value. 
 
-	    The objects to be used inside the ConcurrentHashMap will be Book objects. A Book object will contain an ISBN (primary key), title, author, and publisher. A Book object will not have to be thread safe since the data structure storing a Book object will itself be thread safe.
+	  The objects to be used inside the ConcurrentHashMap will be Book objects. A Book object will contain an ISBN (primary key), title, author, and publisher. A Book object will not have to be thread safe since the data structure storing a Book object will itself be thread safe.
 
-	    	public class Book {
+		public class Book {
 
-	    		private int isbn;				// primary key
+			private int isbn;				// primary key
 			    private String title;
 			    private String author;
 			    private String publisher;
-			    		    
+
 			    public Book(int isbn, String title, String author, String publisher) {
-			    	this.isbn = isbn;   
-			    	this.title = title;
-			        this.author = author;
-			        this.publisher=publisher;
+				this.isbn = isbn;   
+				this.title = title;
+				this.author = author;
+				this.publisher=publisher;
 				}
 
 				...
@@ -73,29 +73,29 @@ Status: 		  Proposed
 
 	3.2 Structure of Client(s)
 
-		The client will be responsible for creating a stream socket and connecting it to the specified port number at the specified IP address. The client will be responsible for catching and handling any errors associated with the creation of a socket. Once a connection is established, the client will also be responsible for validating all data prior to sending that data to the server (including ISBN according to method described in section 2). 
+	The client will be responsible for creating a stream socket and connecting it to the specified port number at the specified IP address. The client will be responsible for catching and handling any errors associated with the creation of a socket. Once a connection is established, the client will also be responsible for validating all data prior to sending that data to the server (including ISBN according to method described in section 2). 
 
-		The client process may send four types of messages through established connection: 
+	The client process may send four types of messages through established connection: 
 
-			1. SUBMIT: 	messages containing Book attributes.
-			2. GET:  	messages containing request for a particular Book(s).
-			3. UPDATE: 	messages containing an update to a particular Book (excluding ISBN).
-			4. DELETE: 	messages containing request to remove a Book.
+	1. SUBMIT: 	messages containing Book attributes.
+	2. GET:  	messages containing request for a particular Book(s).
+	3. UPDATE: 	messages containing an update to a particular Book (excluding ISBN).
+	4. DELETE: 	messages containing request to remove a Book.
 
-		Once the client has sent a request, the client will be responsible for either displaying the data that was request, confirming an operation has taken place, and/or displaying an appropriate error message. 
+	Once the client has sent a request, the client will be responsible for either displaying the data that was request, confirming an operation has taken place, and/or displaying an appropriate error message. 
 
-		To aid the user in utilizing the server, the client will have a graphical user interface (GUI). Minimal GUI requirements are:
+	To aid the user in utilizing the server, the client will have a graphical user interface (GUI). Minimal GUI requirements are:
 
-			1. Text field to provide IP address of the server
-			2. Text field to provide port number
-			3. Connect/Disconnect button
-			4. Text area to type in text to be sent to server and 
-			5. “Send” button
-			6. Text area to display result of the request
+	1. Text field to provide IP address of the server
+	2. Text field to provide port number
+	3. Connect/Disconnect button
+	4. Text area to type in text to be sent to server and 
+	5. “Send” button
+	6. Text area to display result of the request
 
 	3.3 Structure of Server
 
-		3.3.1 Server Operations
+	    3.3.1 Server Operations
 
 			The server will create a stream socket and continuously listen for and accept new connections. The server will be a multi-threaded application capable of supporting multiple, simutanious client connections while maintaining transaction atomicity. The data stored on the server is a “bibliography list” which is empty at startup and is not persistent. The data structure storing this data is outlined in section 3.1.
 
