@@ -95,58 +95,58 @@ Status: 		  Proposed
 
 	3.3 Structure of Server
 
-	    3.3.1 Server Operations
+	3.3.1 Server Operations
 
-			The server will create a stream socket and continuously listen for and accept new connections. The server will be a multi-threaded application capable of supporting multiple, simutanious client connections while maintaining transaction atomicity. The data stored on the server is a “bibliography list” which is empty at startup and is not persistent. The data structure storing this data is outlined in section 3.1.
+	The server will create a stream socket and continuously listen for and accept new connections. The server will be a multi-threaded application capable of supporting multiple, simutanious client connections while maintaining transaction atomicity. The data stored on the server is a “bibliography list” which is empty at startup and is not persistent. The data structure storing this data is outlined in section 3.1.
 
-			The server may process the following messages received from client:
+	The server may process the following messages received from client:
 
-				1. SUBMIT: 	create a new Book and add it to the bibliograph list (if the Book is not a duplicate).
-				2. GET:	send to client a list of entries matching particular request.
-				3. UPDATE: 	update a relevant entry in the bibliography list (excluding ISBN).
-				4. DELETE:	remove the relevant entry from the bibliography list.
+		1. SUBMIT: 	create a new Book and add it to the bibliograph list (if the Book is not a duplicate).
+		2. GET:		send to client a list of entries matching particular request.
+		3. UPDATE: 	update a relevant entry in the bibliography list (excluding ISBN).
+		4. DELETE:	remove the relevant entry from the bibliography list.
 
-			Once an operation has taken place, the server will sent either the data requested or a confirmation message to the client. If the operation could not take place, the server will send an appropriate error message to the client.
+	Once an operation has taken place, the server will sent either the data requested or a confirmation message to the client. If the operation could not take place, the server will send an appropriate error message to the client.
 
-		3.3.2 Server Error Codes
+	3.3.2 Server Error Codes
 
-			The server may return a number of codes depending upon client request success/falure. The codes are as follows:
+	The server may return a number of codes depending upon client request success/falure. The codes are as follows:
 
-				SUCCESS:	client request has completed without error.
-				INVALID:	client SUBMIT request was invalid.
-				RESTRICTED:	client UPDATE request attempting to update ISBN.
-				NOTFOUND:	client GET/DELETE reqeust cannot be found.
-				UNDEFINED:	client attemped to send an undefined message.
+		SUCCESS:	client request has completed without error.
+		INVALID:	client SUBMIT request was invalid.
+		RESTRICTED:	client UPDATE request attempting to update ISBN.
+		NOTFOUND:	client GET/DELETE reqeust cannot be found.
+		UNDEFINED:	client attemped to send an undefined message.
 
-		3.3.3 Server Thread Implementation
+	3.3.3 Server Thread Implementation
 
-			To ensure the server can serve multiple, simutanious client connections, the structure of the server will be as follows:
+	To ensure the server can serve multiple, simutanious client connections, the structure of the server will be as follows:
 
-				while (true) {
-					// accept a connection;
-					// create a thread to deal with the client;
-				}
+		while (true) {
+			// accept a connection;
+			// create a thread to deal with the client;
+		}
 
-			In more detail, the server implementation will look similar to the following:
+	In more detail, the server implementation will look similar to the following:
 
-				... {
+		... {
 
-					...
+			...
 
-					int portNumber = Integer.parseInt(args[0]);
-			        boolean listening = true;
-			         
-			        try (ServerSocket serverSocket = new ServerSocket(portNumber)) { 
-			            while (listening) {
-			                Thread serverThread = new ServerThread(serverSocket.accept());
-			                serverThread.start();
-			            }
-			        } catch (IOException e) {
-			            // handle error
-			        }
-			    }
+			int portNumber = Integer.parseInt(args[0]);
+		boolean listening = true;
 
-		    The thread reads from and writes to the client connection as necessary.
+		try (ServerSocket serverSocket = new ServerSocket(portNumber)) { 
+		    while (listening) {
+			Thread serverThread = new ServerThread(serverSocket.accept());
+			serverThread.start();
+		    }
+		} catch (IOException e) {
+		    // handle error
+		}
+	    }
+
+	The thread reads from and writes to the client connection as necessary.
 
 4. Usage Examples
 
@@ -219,4 +219,4 @@ Status: 		  Proposed
 	[server response on success]
 		"SUCCESS"
 	[server resonse on failure]
-"NOTFOUND"
+		"NOTFOUND"
