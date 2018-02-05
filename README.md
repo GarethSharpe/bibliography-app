@@ -108,7 +108,7 @@ The server may process the following messages received from client:
 
 Once an operation has taken place, the server will sent either the data requested or a confirmation message to the client. If the operation could not take place, the server will send an appropriate error message to the client.
 
-### 3.3.2 Server Error Codes
+#### 3.3.2 Server Error Codes
 
 The server may return a number of codes depending upon client request success/falure. The codes are as follows:
 
@@ -118,7 +118,7 @@ The server may return a number of codes depending upon client request success/fa
 	NOTFOUND:	client GET/DELETE reqeust cannot be found.
 	UNDEFINED:	client attemped to send an undefined message.
 
-### 3.3.3 Server Thread Implementation
+#### 3.3.3 Server Thread Implementation
 
 To ensure the server can serve multiple, simutanious client connections, the structure of the server will be as follows:
 
