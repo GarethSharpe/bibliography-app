@@ -11,23 +11,23 @@ Status: 		  Proposed
 
 ## 1. Overview
 
-	This document outlines the development of a client server application using the Java stream socket API. This multi-threaded application supports the work of a collection of clients on a bibliography data structure containing client-defined books. This application follows HTTP Methods for CRUD API Services as a subset of RESTful API services. 
+This document outlines the development of a client server application using the Java stream socket API. This multi-threaded application supports the work of a collection of clients on a bibliography data structure containing client-defined books. This application follows HTTP Methods for CRUD API Services as a subset of RESTful API services. 
 
 ## 2. Definitions
 	
-	Client: A client is a piece of computer hardware or software that accesses a service made available by a server. The server is often (but not always) on another computer system, in which case the client accesses the service by way of a network. The term applies to the role that programs or devices play in the client–server model.
+Client: A client is a piece of computer hardware or software that accesses a service made available by a server. The server is often (but not always) on another computer system, in which case the client accesses the service by way of a network. The term applies to the role that programs or devices play in the client–server model.
 
-	Server: A server is a piece of computer hardware or software that provides functionality for other programs or devices, called "clients". This architecture is called the client–server model, and a single overall computation is distributed across multiple processes or devices. Servers can provide various functionalities, often called "services", such as sharing data or resources among multiple clients, or performing computation for a client. A single server can serve multiple clients, and a single client can use multiple servers.
+Server: A server is a piece of computer hardware or software that provides functionality for other programs or devices, called "clients". This architecture is called the client–server model, and a single overall computation is distributed across multiple processes or devices. Servers can provide various functionalities, often called "services", such as sharing data or resources among multiple clients, or performing computation for a client. A single server can serve multiple clients, and a single client can use multiple servers.
 
-	Service: A service is an abstraction of computer resources. The client of a service does not have to be concerned with how the server performs while fulfilling the request and delivering the response. The client only has to understand the response based on the well-known application protocol, i.e. the content and the formatting of the data for the requested service.
+Service: A service is an abstraction of computer resources. The client of a service does not have to be concerned with how the server performs while fulfilling the request and delivering the response. The client only has to understand the response based on the well-known application protocol, i.e. the content and the formatting of the data for the requested service.
 
-	Socket: A socket is one endpoint of a two-way communication link between two programs running on the network. A socket is bound to a port number so that the TCP layer can identify the application that data is destined to be sent to.
+Socket: A socket is one endpoint of a two-way communication link between two programs running on the network. A socket is bound to a port number so that the TCP layer can identify the application that data is destined to be sent to.
 
-	API: An application programming interface (API) is a set of subroutine definitions, protocols, and tools for building application software. In general terms, it is a set of clearly defined methods of communication between various software components
+API: An application programming interface (API) is a set of subroutine definitions, protocols, and tools for building application software. In general terms, it is a set of clearly defined methods of communication between various software components
 
-	CRUD: In this application, create, read, update, and delete (as an acronym CRUD) are the four basic functions of persistent storage that will be used.
+CRUD: In this application, create, read, update, and delete (as an acronym CRUD) are the four basic functions of persistent storage that will be used.
 
-	ISBN: The International Standard Book Number (ISBN) is a unique numeric commercial book identifier. The ISBN is 13 digits long if assigned on or after 1 January 2007. The ISBN-13 check digit, which is the last digit of the ISBN, must range from 0 to 9 and must be such that the sum of all the thirteen digits, each multiplied by its (integer) weight, alternating between 1 and 3, is a multiple of 10. Full method is described here: https://en.wikipedia.org/wiki/International_Standard_Book_Number#ISBN-13_check_digit_calculation.
+ISBN: The International Standard Book Number (ISBN) is a unique numeric commercial book identifier. The ISBN is 13 digits long if assigned on or after 1 January 2007. The ISBN-13 check digit, which is the last digit of the ISBN, must range from 0 to 9 and must be such that the sum of all the thirteen digits, each multiplied by its (integer) weight, alternating between 1 and 3, is a multiple of 10. Full method is described here: https://en.wikipedia.org/wiki/International_Standard_Book_Number#ISBN-13_check_digit_calculation.
 
 ## 3. Implementation Details
 
@@ -92,6 +92,7 @@ To aid the user in utilizing the server, the client will have a graphical user i
 	4. Text area to type in text to be sent to server and 
 	5. “Send” button
 	6. Text area to display result of the request
+	
 ### 3.3 Structure of Server
 
 #### 3.3.1 Server Operations
