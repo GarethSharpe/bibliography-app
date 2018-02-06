@@ -52,7 +52,7 @@ The overall data structure to be used for this application will be a ConcurrentH
 
 This class is a hash table supporting full concurrency of retrievals and high expected concurrency for updates. This 	class obeys the same functional specification as Hashtable, and includes versions of methods corresponding to each method of Hashtable. Retrievals reflect the results of the most recently completed update operations holding upon their onset. The table is dynamically expanded when there are too many collisions. This class does not allow null to be used as a key or value. 
 
-The objects to be used inside the ConcurrentHashMap will be Book objects. A Book object will contain an ISBN (primary key), title, author, and publisher. A Book object will not have to be thread safe since the data structure storing a Book object will itself be thread safe.
+The objects to be used inside the ConcurrentHashMap will be Book objects. A Book object will contain an ISBN (primary key), title, author, publisher and year. A Book object will not have to be thread safe since the data structure storing a Book object will itself be thread safe.
 
 	public class Book {
 
@@ -60,12 +60,14 @@ The objects to be used inside the ConcurrentHashMap will be Book objects. A Book
 		private String title;
 		private String author;
 		private String publisher;
+		private long year;
 
-		public Book(int isbn, String title, String author, String publisher) {
+		public Book(int isbn, String title, String author, String publisher, long year) {
 			this.isbn = isbn;   
 			this.title = title;
 			this.author = author;
-			this.publisher=publisher;
+			this.publisher = publisher;
+			this.year = year;
 		}
 
 		...
@@ -80,7 +82,7 @@ The client process may send four types of messages through established connectio
 	1. SUBMIT: 	messages containing Book attributes.
 	2. GET:  	messages containing request for a particular Book(s).
 	3. UPDATE: 	messages containing an update to a particular Book (excluding ISBN).
-	4. DELETE: 	messages containing request to remove a Book.
+	4. REMOVE: 	messages containing request to remove a Book.
 
 Once the client has sent a request, the client will be responsible for either displaying the data that was request, confirming an operation has taken place, and/or displaying an appropriate error message. 
 
@@ -104,7 +106,7 @@ The server may process the following messages received from client:
 	1. SUBMIT: 	create a new Book and add it to the bibliograph list (if the Book is not a duplicate).
 	2. GET:		send to client a list of entries matching particular request.
 	3. UPDATE: 	update a relevant entry in the bibliography list (excluding ISBN).
-	4. DELETE:	remove the relevant entry from the bibliography list.
+	4. REMOVE:	remove the relevant entry from the bibliography list.
 
 Once an operation has taken place, the server will sent either the data requested or a confirmation message to the client. If the operation could not take place, the server will send an appropriate error message to the client.
 
