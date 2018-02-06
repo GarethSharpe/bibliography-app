@@ -146,7 +146,7 @@ In more detail, the server implementation will look similar to the following:
 		} catch (IOException e) {
 		    // handle error
 		}
-    	}
+    }
 
 The thread reads from and writes to the client connection as necessary.
 
